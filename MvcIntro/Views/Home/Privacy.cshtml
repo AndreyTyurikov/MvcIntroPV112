@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+
+    string greetings = "Hi there";
+
+    int age = 16;
+
+    int[] numbers = { 1, 2, 3, 4, 5, 6 };
+
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<h2>@greetings</h2>
+
+<h3>Current date is: @DateTime.Now</h3>
+
+<div>Test</div>
+
+@if (age < 18)
+{
+    <h3 style="color: red">Access prohibited</h3>
+}
+else
+{
+    <h3 style="color: green">Access allowed</h3>
+}
+
+<ul>
+@for (int i = 0; i < numbers.Length; i++)
+{
+     <li>I'm number @numbers[i]</li>
+}
+</ul>
+
+@Html.ActionLink("Home", "Show", "Image", new { width = 10, height = 20 }, new { Class = "btn btn-success" })
