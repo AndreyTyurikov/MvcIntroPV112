@@ -1,0 +1,65 @@
+﻿@model MvcIntro.Models.AccountRegisterViewModel
+
+@{
+    ViewData["Title"] = "Register Account";
+}
+
+<h1>Register Account</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" type="email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityID" class="control-label">Select your city:</label>
+                <select asp-for="CityID" class="form-control" asp-items="Model.Cities"></select>
+                <span asp-validation-for="CityID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PasswordRepeat" class="control-label">Password Repeat:</label>
+                <input asp-for="PasswordRepeat" type="password" class="form-control" />
+                <span asp-validation-for="PasswordRepeat" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AgreeToTerms" /> 
+                    <label asp-for="AgreeToTerms" class="control-label">Agree To Terms:</label>
+                    <span asp-validation-for="AgreeToTerms" class="text-danger"></span>
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register Account" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts
+{
+    @if (Model.Password is not null)
+    {
+        <script>
+            $("#Password").val('@Model.Password');
+        </script>
+    }
+
+    @if (Model.PasswordRepeat is not null)
+    {
+        <script>
+            $("#PasswordRepeat").val('@Model.PasswordRepeat');
+        </script>
+    }
+}
+
+
